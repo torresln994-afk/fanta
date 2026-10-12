@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pet Shop Patinhas Felizes</title>
+  <style>
+    :root {
+      --cor-principal: #ff7a2f;
+      --cor-principal-escura: #e25e14;
+      --cor-texto: #2b2118;
+      --cor-fundo: #fffaf4;
+      --cor-branco: #ffffff;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: "Segoe UI", Roboto, Arial, sans-serif;
+      color: var(--cor-texto);
+      background: var(--cor-fundo);
+    }
+
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      background: linear-gradient(135deg, #ffe2c7 0%, #ffd0a6 100%);
+    }
+
+    .hero-video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+    }
+
+    /* Camada escura para o texto ficar legível sobre o vídeo */
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(43, 33, 24, 0.75) 0%, rgba(43, 33, 24, 0.2) 100%);
+      z-index: 1;
+    }
+
+    .hero-conteudo {
+      position: relative;
+      z-index: 2;
+      max-width: 1100px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 96px 16px;
+      color: var(--cor-branco);
+    }
+
+    .hero-tag {
+      display: inline-block;
+      background: var(--cor-principal);
+      color: var(--cor-branco);
+      font-size: 14px;
+      font-weight: 600;
+      padding: 6px 14px;
+      border-radius: 999px;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.2rem, 6vw, 4rem);
+      line-height: 1.1;
+      max-width: 640px;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      font-size: clamp(1rem, 2.5vw, 1.25rem);
+      max-width: 520px;
+      line-height: 1.6;
+      margin-bottom: 32px;
+      opacity: 0.92;
+    }
+
+    .hero-botoes {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .btn {
+      display: inline-block;
+      text-decoration: none;
+      font-weight: 600;
+      padding: 14px 28px;
+      border-radius: 10px;
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    .btn:hover { transform: translateY(-2px); }
+
+    .btn-primario {
+      background: var(--cor-principal);
+      color: var(--cor-branco);
+    }
+
+    .btn-primario:hover { background: var(--cor-principal-escura); }
+
+    .btn-secundario {
+      border: 2px solid var(--cor-branco);
+      color: var(--cor-branco);
+    }
+
+    @media (max-width: 600px) {
+      .hero-conteudo { padding: 72px 16px; }
+      .btn { width: 100%; text-align: center; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .hero-video { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <section class="hero">
+    <!-- Coloque o vídeo em pet-shop/videos/hero-pet.mp4 (15 segundos) -->
+    <video class="hero-video" autoplay muted loop playsinline preload="auto">
+      <source src="videos/hero-pet.mp4" type="video/mp4">
+    </video>
+
+    <div class="hero-conteudo">
+      <span class="hero-tag">Tudo para o seu pet</span>
+      <h1>Cuidado de verdade para a sua patinha</h1>
+      <p>Rações, brinquedos, higiene e acessórios selecionados com carinho para cães e gatos felizes e saudáveis.</p>
+      <div class="hero-botoes">
+        <a href="#produtos" class="btn btn-primario">Ver produtos</a>
+        <a href="#contato" class="btn btn-secundario">Fale com a gente</a>
+      </div>
+    </div>
+  </section>
+
+</body>
+</html>
