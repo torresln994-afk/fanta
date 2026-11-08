@@ -1,0 +1,871 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BYD | SUV 100% elétrico. Agende seu test drive</title>
+<meta name="description" content="SUVs 100% elétricos BYD. Carregue em casa, gaste menos por mês e tenha um pós-venda que responde. Agende um test drive de 40 minutos no seu horário.">
+<meta name="theme-color" content="#0b1018">
+<!-- DEPLOY STEP: trocar pelas URLs absolutas do site no ar -->
+<meta property="og:title" content="BYD | Agende seu test drive">
+<meta property="og:description" content="O futuro chegou em silêncio. Test drive de 40 minutos, no seu horário.">
+<meta property="og:image" content="assets/hero-ending.jpg">
+<meta property="og:url" content="">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230b1018'/%3E%3Crect x='10' y='30' width='44' height='4' rx='2' fill='%238fd4ff'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;600&family=JetBrains+Mono:wght@500&family=Michroma&display=swap" rel="stylesheet">
+<style>
+:root{
+  --canvas:#0b1018;--panel:#121a26;--panel-2:#172131;
+  --accent:#8fd4ff;--accent-hover:#b5e3ff;--accent-muted:rgba(143,212,255,.18);
+  --text-secondary:#9aa8ba;--text-primary:#eef3f8;--line:rgba(154,168,186,.22);--line-strong:#5f6f84;
+  --ease-out:cubic-bezier(.22,1,.36,1);--ease-io:cubic-bezier(.65,0,.35,1);
+  --tshadow:0 1px 2px rgba(5,7,12,.95),0 3px 12px rgba(5,7,12,.78),0 10px 44px rgba(5,7,12,.8);
+  --display:"Michroma",system-ui,sans-serif;--body:"Figtree",system-ui,sans-serif;--mono:"JetBrains Mono",ui-monospace,monospace;
+}
+*{box-sizing:border-box}
+html{overflow-x:hidden;overflow-x:clip;scroll-behavior:smooth}
+body{margin:0;overflow-x:hidden;overflow-x:clip;background:var(--canvas);color:var(--text-primary);font:400 1.0625rem/1.6 var(--body);-webkit-font-smoothing:antialiased;animation:pagein .9s var(--ease-out) both}
+@keyframes pagein{from{opacity:0}to{opacity:1}}
+img{max-width:100%;display:block}
+a{color:inherit}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.skip{position:fixed;left:16px;top:-60px;z-index:100;background:var(--accent);color:#06121c;padding:10px 16px;border-radius:10px;font-weight:600;transition:top .3s var(--ease-out)}
+.skip:focus{top:16px}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:6px}
+
+/* ambiente fixo */
+.ambient{position:fixed;inset:0;z-index:-1;pointer-events:none;overflow:hidden}
+.ambient::before{content:"";position:absolute;inset:-30%;background:radial-gradient(40% 35% at 30% 30%,rgba(143,212,255,.07),transparent 70%),radial-gradient(35% 30% at 75% 70%,rgba(120,150,210,.06),transparent 70%);animation:drift 70s linear infinite;animation-delay:-20s}
+.ambient::after{content:"";position:absolute;inset:0;opacity:.07;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+@keyframes drift{0%{transform:translate3d(0,0,0) rotate(0)}50%{transform:translate3d(4%,-3%,0) rotate(8deg)}100%{transform:translate3d(0,0,0) rotate(0)}}
+
+.rain{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;opacity:0;transition:opacity 1.2s var(--ease-out)}
+.rain.on{opacity:1}
+main,footer{position:relative;z-index:1}
+.par{will-change:transform}
+
+/* navegação */
+.nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:18px clamp(16px,4vw,48px);background:linear-gradient(rgba(11,16,24,.78),rgba(11,16,24,0));transition:background .5s var(--ease-out)}
+.nav.solid{background:rgba(11,16,24,.86);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.logo{font:400 1.15rem/1 var(--display);letter-spacing:.32em;text-decoration:none;padding-left:.32em}
+.nav ul{display:flex;gap:28px;list-style:none;margin:0;padding:0}
+.nav ul a{font-size:.95rem;color:var(--text-secondary);text-decoration:none;transition:color .3s var(--ease-out)}
+.nav ul a:hover{color:var(--text-primary)}
+.btn{display:inline-block;font:600 1rem/1 var(--body);text-decoration:none;color:#06121c;background:var(--accent);border:0;border-radius:999px;padding:15px 26px;cursor:pointer;text-shadow:none;transition:background .3s var(--ease-out),transform .3s var(--ease-out),box-shadow .3s var(--ease-out)}
+.btn:hover{background:var(--accent-hover);transform:translateY(-1px);box-shadow:0 8px 30px rgba(143,212,255,.25)}
+.btn.small{padding:11px 18px;font-size:.92rem}
+.btn.ghost{background:transparent;color:var(--text-primary);border:1px solid var(--line-strong)}
+.btn.ghost:hover{border-color:var(--accent);background:rgba(143,212,255,.06)}
+@media (pointer:coarse){.btn{min-height:44px;display:inline-flex;align-items:center;justify-content:center}}
+@media (max-width:860px){.nav ul{display:none}}
+
+/* HERO */
+.hero{position:relative;height:500vh}
+.stage{position:sticky;top:0;height:100vh;overflow:hidden;background:#0b1018}
+.poster,.stage video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background-size:cover;background-position:center}
+.stage video{opacity:0;transition:opacity .6s var(--ease-out);will-change:transform;transform:translateZ(0)}
+.stage.video-ready video{opacity:1}
+.stage.video-failed video{display:none}
+.poster-end{opacity:0;transition:opacity .9s var(--ease-out)}
+.stage.video-failed.late .poster-end{opacity:1}
+.stage.late .cue{opacity:0}
+.cue{transition:opacity .6s var(--ease-out)}
+.scrim{position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,rgba(8,11,18,.55) 0%,rgba(8,11,18,.15) 45%,rgba(8,11,18,0) 60%),radial-gradient(ellipse 120% 90% at 50% 45%,rgba(8,11,18,0) 40%,rgba(8,11,18,.55) 100%)}
+.bands{position:absolute;inset:0}
+.band{position:absolute;left:clamp(16px,6vw,96px);top:50%;transform:translateY(-50%);width:min(500px,38vw);opacity:0;text-shadow:var(--tshadow)}
+.band::before{content:"";position:absolute;inset:-28% -22%;z-index:-1;pointer-events:none;opacity:calc(.25 + .75*var(--k,1));background:radial-gradient(ellipse 72% 62% at 42% 50%,rgba(5,7,12,var(--pk,.62)) 0%,rgba(5,7,12,calc(var(--pk,.62)*.66)) 46%,rgba(5,7,12,0) 76%)}
+.kicker{font:500 .78rem/1 var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin:0 0 22px}
+.band h1,.band h2{font:400 clamp(1.7rem,3.2vw,2.9rem)/1.22 var(--display);letter-spacing:.01em;margin:0}
+.band p.sub{font-size:clamp(1.05rem,1.4vw,1.25rem);color:#dfe6ee;margin:20px 0 0;max-width:34ch}
+.band .cta-row{margin-top:30px;display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+.band .btn{text-shadow:none}
+.w{display:inline-block;white-space:nowrap}
+/* (c) desfoque para nítido */
+.fx-blur{display:grid}
+.fx-blur>*{grid-area:1/1}
+.fx-blur .soft{filter:blur(10px);opacity:calc(1 - var(--k,0))}
+.fx-blur .sharp{opacity:var(--k,0)}
+/* (f) deriva para baixo */
+.fx-drift .w{--kc:clamp(0,(var(--k,0) - var(--th,0))*2.8,1);opacity:var(--kc);transform:translateY(calc((1 - var(--kc))*-26px))}
+.fx-drift-sub{opacity:clamp(0,(var(--k,0) - .5)*3,1);transform:translateY(calc((1 - clamp(0,(var(--k,0) - .5)*3,1))*-14px))}
+/* (e) subida em etapas */
+.fx-rise .w{--kc:clamp(0,(var(--k,0) - var(--th,0))*3,1);opacity:var(--kc);transform:translateY(calc((1 - var(--kc))*.55em))}
+.fx-rise-sub{opacity:clamp(0,(var(--k,0) - .62)*4,1);transform:translateY(calc((1 - clamp(0,(var(--k,0) - .62)*4,1))*12px))}
+.fx-rise-cta{opacity:clamp(0,(var(--k,0) - .78)*5,1);transform:translateY(calc((1 - clamp(0,(var(--k,0) - .78)*5,1))*12px))}
+.ring{position:absolute;right:28px;bottom:28px;width:40px;height:40px;color:var(--accent);opacity:.85;transition:opacity .5s var(--ease-out)}
+.ring circle.track{stroke:rgba(154,168,186,.25)}
+.stage.video-ready .ring{opacity:0}
+.cue{position:absolute;left:50%;bottom:26px;transform:translateX(-50%);font:500 .72rem/1 var(--mono);letter-spacing:.24em;color:var(--text-secondary);text-transform:uppercase;display:flex;flex-direction:column;align-items:center;gap:10px}
+.cue i{display:block;width:1px;height:34px;background:linear-gradient(var(--accent),transparent);animation:cue 2.4s var(--ease-io) infinite;animation-delay:-.6s;transform-origin:top}
+@keyframes cue{0%{transform:scaleY(0)}50%{transform:scaleY(1)}100%{transform:scaleY(1);opacity:0}}
+.hero-static{display:none}
+@media (max-height:560px){.cue,.ring{display:none}}
+
+/* hero estático: os cinco portões */
+@media (max-width:720px),(orientation:portrait) and (max-width:1024px),(orientation:portrait) and (pointer:coarse),(orientation:landscape) and (pointer:coarse) and (max-height:560px),(prefers-reduced-motion:reduce){
+  .hero{height:auto}
+  .stage{position:relative;height:auto;min-height:100svh;display:flex;align-items:flex-end}
+  .stage video,.bands,.ring,.cue,.hud{display:none}
+  .media{transform:none}
+  .fade-bottom{opacity:1;height:22%}
+  .stats{margin-top:0;padding-top:48px}
+  .poster{background-image:url("assets/hero-ending.jpg");background-position:68% center}
+  .scrim{background:linear-gradient(180deg,rgba(8,11,18,.2) 0%,rgba(8,11,18,.35) 45%,rgba(8,11,18,.92) 78%)}
+  .hero-static{display:block;position:relative;padding:120px 20px 56px;max-width:620px;text-shadow:var(--tshadow)}
+  .hero-static h1{font:400 clamp(1.6rem,6.4vw,2.5rem)/1.25 var(--display);margin:0}
+  .hero-static p{color:#dfe6ee;margin:18px 0 28px;max-width:34ch}
+}
+
+/* SEÇÕES */
+main{position:relative}
+section{position:relative;padding:clamp(88px,12vw,150px) clamp(16px,6vw,96px)}
+.wrap{max-width:1180px;margin:0 auto}
+.label{font:500 .76rem/1 var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin:0 0 18px}
+h2.title{font:400 clamp(1.5rem,2.8vw,2.4rem)/1.25 var(--display);margin:0;max-width:22ch}
+.lede{color:var(--text-secondary);font-size:1.12rem;max-width:52ch;margin:20px 0 0}
+/* a linha de luz, assinatura */
+.beam{position:relative;height:1px;margin:0 auto;max-width:1180px;background:linear-gradient(90deg,transparent,var(--accent) 30%,#e8f6ff 50%,var(--accent) 70%,transparent);transform:scaleX(0);opacity:.0;transition:transform 1.6s var(--ease-out),opacity 1.2s var(--ease-out)}
+.beam::after{content:"";position:absolute;left:20%;right:20%;top:-6px;height:13px;background:radial-gradient(ellipse at center,rgba(143,212,255,.35),transparent 70%);filter:blur(4px)}
+.beam.in{transform:scaleX(1);opacity:.9}
+
+/* entradas */
+.reveal .r{opacity:0;transform:translateY(22px);transition:opacity .9s var(--ease-out),transform .9s var(--ease-out)}
+.reveal.in .r{opacity:1;transform:none}
+.reveal.in .r:nth-child(2){transition-delay:.1s}.reveal.in .r:nth-child(3){transition-delay:.2s}.reveal.in .r:nth-child(4){transition-delay:.3s}
+.reveal.in.settled .r:nth-child(n){transition-delay:0s}
+
+/* 1. a conta, momento interativo */
+.charge{display:grid;grid-template-columns:1.05fr 1fr;gap:clamp(32px,6vw,90px);align-items:center}
+.battery{position:relative;background:var(--panel);border:1px solid var(--line);border-radius:28px;padding:clamp(24px,4vw,44px)}
+.cell{position:relative;height:88px;border:1px solid var(--line-strong);border-radius:16px;padding:8px;margin-right:14px}
+.cell::after{content:"";position:absolute;right:-12px;top:30px;width:8px;height:28px;border-radius:0 6px 6px 0;background:var(--line-strong)}
+.fill{height:100%;border-radius:10px;background:linear-gradient(90deg,#3d8fc4,var(--accent) 70%,#e8f6ff);transform-origin:left;transform:scaleX(var(--c,0));box-shadow:0 0 30px rgba(143,212,255,.35)}
+.readout{display:flex;justify-content:space-between;align-items:baseline;margin-top:22px;font-family:var(--mono)}
+.readout b{font:400 clamp(2rem,4vw,3rem)/1 var(--display);color:var(--text-primary)}
+.readout span{color:var(--text-secondary);font-size:.9rem}
+.hold{margin-top:26px;width:100%;position:relative;overflow:hidden;user-select:none;-webkit-user-select:none;touch-action:none}
+.hold .hint{position:relative}
+.compare{margin-top:30px;display:grid;gap:14px}
+.compare .row{display:flex;justify-content:space-between;align-items:baseline;gap:20px;padding:18px 20px;border-radius:16px;border:1px solid var(--line);opacity:0;transform:translateY(12px);transition:opacity .7s var(--ease-out),transform .7s var(--ease-out)}
+.compare .row strong{font:400 1.35rem/1 var(--display);white-space:nowrap}
+.compare .row.ev{border-color:rgba(143,212,255,.5);background:rgba(143,212,255,.06)}
+.compare .row.ev strong{color:var(--accent)}
+.charged .compare .row{opacity:1;transform:none}
+.charged .compare .row:nth-child(2){transition-delay:.25s}
+.charged .compare .note{opacity:1;transition-delay:.5s}
+.compare .note{font-size:.85rem;color:var(--text-secondary);opacity:0;transition:opacity .7s var(--ease-out);margin:4px 0 0}
+.done-msg{font:500 .8rem/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--accent);opacity:0;transition:opacity .6s var(--ease-out);margin-top:14px}
+.charged .done-msg{opacity:1}
+
+/* 2. onde carregar: três passos iguais */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,2.4vw,28px);margin-top:56px;counter-reset:s}
+.step{background:var(--panel);border:1px solid var(--line);border-radius:22px;overflow:hidden;transition:transform .5s var(--ease-out),border-color .5s var(--ease-out)}
+.step:hover{transform:translateY(-4px);border-color:rgba(143,212,255,.4)}
+.step figure{margin:0;aspect-ratio:4/3;overflow:hidden;background:var(--panel-2)}
+.step img{width:100%;height:100%;object-fit:cover;transform:scale(1.08);transition:filter .8s var(--ease-out)}
+.step:hover img{filter:brightness(1.12)}
+.step div{padding:24px 24px 28px}
+.step h3{font:400 1.05rem/1.3 var(--display);margin:0 0 10px;display:flex;align-items:baseline;gap:12px}
+.step h3::before{counter-increment:s;content:"0" counter(s);font:500 .75rem/1 var(--mono);color:var(--accent)}
+.step p{margin:0;color:var(--text-secondary)}
+
+/* 3. modelos: layout em mosaico */
+.models{display:grid;grid-template-columns:1.2fr 1fr;grid-template-rows:auto auto;gap:clamp(16px,2.4vw,28px);margin-top:56px}
+.model{position:relative;border-radius:22px;overflow:hidden;background:var(--panel);border:1px solid var(--line);min-height:300px;display:flex;align-items:flex-end}
+.model.big{grid-row:span 2;min-height:640px}
+.model img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.08);transition:filter .8s var(--ease-out)}
+.model:hover img{filter:brightness(1.12)}
+.model::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,11,18,0) 40%,rgba(8,11,18,.88) 100%)}
+.model .info{position:relative;z-index:1;padding:26px;display:flex;justify-content:space-between;align-items:flex-end;gap:16px;width:100%}
+.model h3{font:400 1.3rem/1.2 var(--display);margin:0}
+.model p{margin:6px 0 0;color:#cfd8e2;font-size:.95rem}
+
+/* 4. pós-venda: título fixo + lista */
+.care{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(32px,6vw,90px)}
+.care .head{position:sticky;top:120px;align-self:start}
+.promises{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.promises li{display:grid;grid-template-columns:56px 1fr;gap:18px;padding:30px 0;border-bottom:1px solid var(--line);align-items:baseline}
+.promises .n{font:500 .8rem/1 var(--mono);color:var(--accent)}
+.promises h3{font:600 1.25rem/1.35 var(--body);margin:0}
+.promises p{margin:8px 0 0;color:var(--text-secondary)}
+.pulse{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--accent);margin-right:10px;position:relative;vertical-align:middle}
+.pulse::after{content:"";position:absolute;inset:-6px;border-radius:50%;border:1px solid var(--accent);opacity:0}
+.live .pulse::after{animation:ping 4s var(--ease-out) infinite;animation-delay:-1s}
+@keyframes ping{0%{transform:scale(.4);opacity:.8}70%,100%{transform:scale(1.8);opacity:0}}
+
+/* 5. dúvidas */
+.faq{max-width:820px;margin:48px auto 0}
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{list-style:none;cursor:pointer;padding:26px 44px 26px 0;position:relative;font:600 1.15rem/1.4 var(--body)}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"";position:absolute;right:6px;top:50%;width:14px;height:14px;margin-top:-7px;background:linear-gradient(var(--accent),var(--accent)) center/14px 1.5px no-repeat,linear-gradient(var(--accent),var(--accent)) center/1.5px 14px no-repeat;transition:transform .4s var(--ease-out)}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq details p{margin:0 0 26px;color:var(--text-secondary);max-width:62ch}
+.center{text-align:center}.center h2.title,.center .lede{margin-left:auto;margin-right:auto}
+
+/* 6. agendar */
+.book{position:relative;overflow:hidden;padding-top:clamp(120px,16vw,200px);padding-bottom:clamp(120px,16vw,200px)}
+.book .bg{position:absolute;inset:0;background:url("assets/hero-ending.jpg") 70% center/cover;opacity:.55}
+.book .bg::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(11,16,24,.97) 0%,rgba(11,16,24,.86) 48%,rgba(11,16,24,.35) 100%)}
+.book .wrap{position:relative}
+form{margin-top:36px;max-width:520px;display:grid;gap:16px}
+.field{display:grid;gap:8px}
+.field label{font:500 .76rem/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--text-secondary)}
+.field input,.field select{font:400 1.05rem/1.3 var(--body);color:var(--text-primary);background:rgba(18,26,38,.85);border:1px solid var(--line-strong);border-radius:14px;padding:15px 16px;transition:border-color .3s var(--ease-out),box-shadow .3s var(--ease-out)}
+.field input:focus,.field select:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-muted)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+form .btn{margin-top:8px;justify-self:start}
+.success{display:none;margin-top:36px;max-width:520px;padding:28px;border:1px solid rgba(143,212,255,.5);border-radius:20px;background:rgba(143,212,255,.07)}
+.success h3{font:400 1.3rem/1.3 var(--display);margin:0 0 8px}
+.success p{margin:0;color:var(--text-secondary)}
+.sent form{display:none}.sent .success{display:block;animation:pagein .8s var(--ease-out)}
+.fine{font-size:.85rem;color:var(--text-secondary);margin:4px 0 0}
+
+footer{padding:56px clamp(16px,6vw,96px) 40px;border-top:1px solid var(--line);color:var(--text-secondary);font-size:.92rem}
+footer .wrap{display:flex;justify-content:space-between;gap:32px;flex-wrap:wrap;align-items:baseline}
+footer .logo{color:var(--text-primary)}
+
+@media (max-width:960px){
+  .charge,.care{grid-template-columns:1fr}
+  .care .head{position:static}
+  .steps{grid-template-columns:1fr}
+  .models{grid-template-columns:1fr}.model.big{grid-row:auto;min-height:520px}
+}
+@media (max-width:520px){.two{grid-template-columns:1fr}.promises li{grid-template-columns:40px 1fr}}
+
+/* ---- mais vida ---- */
+/* mostrador de bateria no hero */
+.hud{position:absolute;left:clamp(16px,6vw,96px);bottom:34px;display:flex;align-items:center;gap:14px;padding:10px 16px;font:500 .74rem/1 var(--mono);letter-spacing:.16em;color:#dfe9f3;background:rgba(8,11,18,.55);border:1px solid rgba(143,212,255,.28);border-radius:12px;backdrop-filter:blur(10px);text-shadow:0 1px 3px rgba(5,7,12,.85)}
+.hud .bar{width:120px;height:4px;border-radius:4px;background:rgba(154,168,186,.25);overflow:hidden}
+.hud .bar i{display:block;height:100%;background:linear-gradient(90deg,#3d8fc4,var(--accent));transform-origin:left;transform:scaleX(var(--h,0))}
+.hud b{font-weight:500;color:var(--accent);min-width:4ch;text-align:right}
+@media (max-height:560px){.hud{display:none}}
+.hud{transition:opacity .6s var(--ease-out)}
+.stage.end .hud{opacity:0}
+/* títulos palavra por palavra */
+.title .wd{display:inline-block;opacity:0;transform:translateY(.7em) rotate(3deg);transform-origin:left bottom;transition:opacity .8s var(--ease-out),transform .9s var(--ease-out);transition-delay:calc(var(--i,0)*55ms + .1s)}
+.reveal.in .title .wd{opacity:1;transform:none}
+/* brilho de luz nas fotos */
+.glint{position:absolute;inset:0;z-index:1;pointer-events:none;overflow:hidden}
+.glint::before{content:"";position:absolute;top:0;bottom:0;left:0;width:60%;background:linear-gradient(100deg,transparent 0%,rgba(200,235,255,.28) 50%,transparent 100%);transform:translateX(-120%) skewX(-12deg)}
+.reveal.in .glint::before{animation:glint 1.8s var(--ease-out) both;animation-delay:calc(var(--gd,0s) + .35s)}
+@keyframes glint{to{transform:translateX(260%) skewX(-12deg)}}
+.step figure{position:relative}
+/* inclinação 3D */
+.tilt{transform:perspective(1000px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)) translateY(var(--ty,0px));transition:transform .5s var(--ease-out),border-color .5s var(--ease-out)}
+.step.tilt:hover{--ty:-4px}
+.reveal.in .r.tilt{transform:perspective(1000px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)) translateY(var(--ty,0px))}
+.reveal.in.settled .r.tilt{transition:transform .5s var(--ease-out),border-color .5s var(--ease-out),opacity .9s var(--ease-out)}
+/* botões magnéticos */
+.btn.mag{transform:translate(var(--mx,0px),var(--my,0px))}
+.btn.mag:hover{transform:translate(var(--mx,0px),calc(var(--my,0px) - 1px))}
+/* faixa que corre */
+.ticker{position:relative;z-index:1;overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:26px 0;-webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
+.ticker .track{display:flex;width:max-content;gap:56px;will-change:transform}
+.ticker span{font:500 .82rem/1 var(--mono);letter-spacing:.22em;text-transform:uppercase;white-space:nowrap;color:var(--text-secondary);display:flex;align-items:center;gap:56px}
+.ticker span::after{content:"";width:5px;height:5px;border-radius:50%;background:var(--accent);opacity:.8}
+
+/* zoom do vídeo e transição para a página */
+.media{position:absolute;inset:0;transform-origin:64% 58%;will-change:transform;transform:scale(var(--z,1))}
+.fade-bottom{position:absolute;left:0;right:0;bottom:-1px;height:48%;pointer-events:none;background:linear-gradient(180deg,rgba(11,16,24,0) 0%,rgba(11,16,24,.28) 32%,rgba(11,16,24,.72) 66%,rgba(11,16,24,.94) 86%,var(--canvas) 100%);opacity:var(--end,.3)}
+.stage::before{content:"";position:absolute;left:0;right:0;top:0;height:22%;z-index:1;pointer-events:none;background:linear-gradient(rgba(11,16,24,.55),rgba(11,16,24,0))}
+
+/* números logo abaixo do hero, sobre a transição */
+.stats{position:relative;z-index:2;max-width:1180px;margin:-120px auto 0;padding:0 clamp(16px,6vw,96px) clamp(64px,8vw,110px);display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(16px,3vw,40px);box-sizing:content-box}
+.stat{border-left:1px solid rgba(143,212,255,.35);padding:4px 0 4px 20px}
+.stat b{display:block;font:400 clamp(1.3rem,2.2vw,1.9rem)/1.1 var(--display);color:var(--text-primary)}
+.stat span{display:block;margin-top:10px;color:var(--text-secondary);font-size:.95rem;max-width:22ch}
+@media (max-width:860px){.stats{grid-template-columns:1fr 1fr;margin-top:-60px;row-gap:32px}}
+
+/* acabamento mais profissional */
+.label{display:flex;align-items:center;gap:14px}
+.label::before{content:"";width:28px;height:1px;background:var(--accent);opacity:.8}
+.center .label{justify-content:center}
+h2.title{font-size:clamp(1.45rem,2.5vw,2.15rem);line-height:1.28;letter-spacing:0}
+.lede{line-height:1.7}
+.nav ul a{font-size:.9rem;letter-spacing:.02em}
+.step,.model,.battery{box-shadow:0 1px 0 rgba(255,255,255,.04) inset,0 30px 60px -30px rgba(0,0,0,.6)}
+footer{padding:80px clamp(16px,6vw,96px) 32px}
+.foot{display:grid !important;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:40px;align-items:start !important}
+.foot-brand p{margin:16px 0 22px;max-width:30ch}
+.foot-col{display:flex;flex-direction:column;gap:10px}
+.foot-col h3{font:500 .74rem/1 var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--text-primary);margin:6px 0 8px}
+.foot-col a{text-decoration:none;color:var(--text-secondary);transition:color .3s var(--ease-out)}
+.foot-col a:hover{color:var(--text-primary)}
+.foot-col p{margin:0}
+.legal{display:flex !important;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-top:56px !important;padding-top:24px;border-top:1px solid var(--line);font-size:.85rem}
+.legal p{margin:0}
+@media (max-width:860px){.foot{grid-template-columns:1fr 1fr}.foot-brand{grid-column:1/-1}}
+/* linhas do pós-venda se desenhando */
+.promises{border-top-color:transparent;position:relative}
+.promises::before{content:"";position:absolute;left:0;right:0;top:-1px;height:1px;background:var(--line);transform:scaleX(0);transform-origin:left;transition:transform 1.2s var(--ease-out)}
+.promises li{border-bottom-color:transparent;position:relative}
+.promises li::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:1px;background:linear-gradient(90deg,var(--accent),var(--line) 40%);transform:scaleX(0);transform-origin:left;transition:transform 1.2s var(--ease-out);transition-delay:calc(var(--i,0)*.15s + .3s)}
+.reveal.in .promises::before,.reveal.in .promises li::after{transform:scaleX(1)}
+
+/* pausas: fora da tela e aba escondida */
+body.paused *,body.paused *::before,body.paused *::after{animation-play-state:paused !important}
+
+/* movimento reduzido: estados finais */
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none !important;transition:none !important;transition-delay:0s !important;scroll-behavior:auto !important}
+  .beam{transform:none;opacity:.9}
+  .reveal .r{opacity:1;transform:none}
+  .title .wd{opacity:1;transform:none}
+  .glint{display:none}
+  .promises::before,.promises li::after{transform:scaleX(1)}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Pular para o conteúdo</a>
+<div class="ambient" aria-hidden="true"></div>
+<canvas class="rain" id="rain" aria-hidden="true"></canvas>
+
+<nav class="nav" id="nav" aria-label="Principal">
+  <a class="logo" href="#top" aria-label="BYD, início">BYD</a>
+  <ul>
+    <li><a href="#conta">A conta</a></li>
+    <li><a href="#recarga">Recarga</a></li>
+    <li><a href="#modelos">Modelos</a></li>
+    <li><a href="#posvenda">Pós-venda</a></li>
+    <li><a href="#duvidas">Dúvidas</a></li>
+  </ul>
+  <a class="btn small" href="#agendar">Agendar test drive</a>
+</nav>
+
+<header class="hero" id="top">
+  <div class="stage" id="stage">
+    <div class="media" id="media" aria-hidden="true">
+      <div class="poster" id="poster"></div>
+      <div class="poster poster-end" id="posterEnd"></div>
+      <video id="hero" preload="none" muted playsinline aria-hidden="true" tabindex="-1"></video>
+    </div>
+    <div class="scrim" aria-hidden="true"></div>
+    <div class="fade-bottom" aria-hidden="true"></div>
+
+    <div class="bands">
+      <div class="band" data-a="0" data-b="0.30" data-ramp="0.06" style="--pk:.6">
+        <p class="kicker">SUV 100% elétrico</p>
+        <h1 class="fx-blur"><span class="soft" aria-hidden="true">O futuro chegou em silêncio.</span><span class="sharp">O futuro chegou em silêncio.</span></h1>
+      </div>
+      <div class="band" data-a="0.35" data-b="0.66" data-ramp="0.08" style="--pk:.64">
+        <h2 class="split fx-drift">Você carrega em casa, enquanto dorme.</h2>
+        <p class="sub fx-drift-sub">Acorda com o tanque cheio. Só que sem tanque.</p>
+      </div>
+      <div class="band" data-a="0.71" data-b="1" data-ramp="0.12" style="--pk:.66">
+        <h2 class="split fx-rise">Sinta antes de decidir.</h2>
+        <p class="sub fx-rise-sub">Test drive de 40 minutos, no seu horário, com quem entende de elétrico.</p>
+        <div class="cta-row fx-rise-cta"><a class="btn" href="#agendar">Agendar test drive</a><a class="btn ghost" href="#conta">Ver a conta</a></div>
+      </div>
+    </div>
+
+    <div class="hero-static">
+      <p class="kicker">SUV 100% elétrico</p>
+      <h1>O futuro chegou em silêncio.</h1>
+      <p>Test drive de 40 minutos, no seu horário, com quem entende de elétrico.</p>
+      <a class="btn" href="#agendar">Agendar test drive</a>
+    </div>
+
+    <svg class="ring" viewBox="0 0 48 48" aria-hidden="true"><circle class="track" cx="24" cy="24" r="20" fill="none" stroke-width="3"/><circle cx="24" cy="24" r="20" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-dasharray="126" transform="rotate(-90 24 24)" style="stroke-dashoffset:var(--ld,126)"/></svg>
+    <div class="cue" aria-hidden="true">Role<i></i></div>
+    <div class="hud" aria-hidden="true"><span>Bateria</span><span class="bar"><i id="hudBar"></i></span><b id="hudPct">0%</b></div>
+  </div>
+</header>
+
+<main id="main" tabindex="-1">
+
+  <div class="stats reveal" aria-label="Em números">
+    <div class="stat r"><b>8 anos</b><span>de garantia na bateria</span></div>
+    <div class="stat r"><b>0 litro</b><span>de gasolina, para sempre</span></div>
+    <div class="stat r"><b>R$ 63</b><span>para encher a bateria em casa</span></div>
+    <div class="stat r"><b>40 min</b><span>de test drive, no seu horário</span></div>
+  </div>
+
+  <section id="conta" class="reveal">
+    <div class="wrap charge">
+      <div>
+        <p class="label r">A conta</p>
+        <h2 class="title r">Segure. Seu carro está carregando.</h2>
+        <p class="lede r">Quem dirige elétrico diz que a maior surpresa não é o silêncio. É olhar a conta no fim do mês. Segure o botão e veja quanto custa encher a bateria em casa.</p>
+      </div>
+      <div class="battery" id="battery">
+        <div class="cell" aria-hidden="true"><div class="fill" id="fill"></div></div>
+        <div class="readout" aria-hidden="true"><b id="pct">0%</b><span id="cost">R$ 0,00 na tomada</span></div>
+        <button class="btn hold" id="hold" type="button"><span class="hint" id="holdText">Segure para carregar</span></button>
+        <p class="done-msg" id="doneMsg" role="status" aria-live="polite"></p>
+        <div class="compare">
+          <div class="row ev"><span>Encher a bateria em casa</span><strong>perto de R$ 63</strong></div>
+          <div class="row"><span>Encher o tanque de um SUV a gasolina</span><strong>perto de R$ 340</strong></div>
+          <p class="note">Estimativa com bateria de 70 kWh a R$ 0,90 o kWh e tanque de 55 litros a R$ 6,20. Varia com a tarifa da sua cidade.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="beam" aria-hidden="true"></div>
+
+  <section id="recarga" class="reveal">
+    <div class="wrap">
+      <p class="label r">Onde eu carrego?</p>
+      <h2 class="title r">A pergunta que todo mundo faz. A resposta é mais simples do que parece.</h2>
+      <div class="steps">
+        <article class="step r">
+          <figure><img src="assets/recarga-casa.jpg" alt="SUV branco carregando na garagem de casa à noite" loading="lazy" width="1920" height="1440"></figure>
+          <div><h3>Em casa</h3><p>A gente indica o carregador de parede e acompanha a instalação. Você liga o carro à noite e esquece.</p></div>
+        </article>
+        <article class="step r">
+          <figure><img src="assets/recarga-cidade.jpg" alt="SUV branco num ponto de recarga da cidade" loading="lazy" width="1920" height="1440"></figure>
+          <div><h3>Na cidade</h3><p>O app mostra os pontos de recarga perto de você, com preço e vaga livre. Shopping, mercado, estacionamento.</p></div>
+        </article>
+        <article class="step r">
+          <figure><img src="assets/recarga-estrada.jpg" alt="SUV branco numa estação de recarga rápida na estrada" loading="lazy" width="1920" height="1440"></figure>
+          <div><h3>Na estrada</h3><p>Recarga rápida nas principais rodovias. Uma pausa para o café e você segue viagem.</p></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <div class="beam" aria-hidden="true"></div>
+
+  <section id="modelos" class="reveal">
+    <div class="wrap">
+      <p class="label r">Escolha o seu</p>
+      <h2 class="title r">Três jeitos de nunca mais parar no posto.</h2>
+      <div class="models">
+        <article class="model big r">
+          <img src="assets/modelo-sealion.jpg" alt="SUV elétrico branco numa estrada de serra" loading="lazy">
+          <div class="info"><div><h3>Sealion 6</h3><p>Para quem quer espaço e estrada.</p></div><a class="btn small" href="#agendar" data-model="Sealion 6">Testar</a></div>
+        </article>
+        <article class="model r">
+          <img src="assets/modelo-song-plus.jpg" alt="SUV cinza estacionado perto de um lago" loading="lazy">
+          <div class="info"><div><h3>Song Plus</h3><p>O SUV da família, no dia a dia.</p></div><a class="btn small" href="#agendar" data-model="Song Plus">Testar</a></div>
+        </article>
+        <article class="model r">
+          <img src="assets/modelo-song-premium.jpg" alt="SUV prata visto de cima, com teto de vidro" loading="lazy">
+          <div class="info"><div><h3>Song Premium</h3><p>Teto de vidro e acabamento de luxo.</p></div><a class="btn small" href="#agendar" data-model="Song Premium">Testar</a></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <div class="ticker" aria-hidden="true"><div class="track" id="track">
+    <span>Sem gasolina</span><span>Sem barulho</span><span>Sem fila no posto</span><span>8 anos de garantia na bateria</span><span>Carrega em casa</span><span>Test drive de 40 minutos</span>
+  </div></div>
+
+  <section id="posvenda" class="reveal">
+    <div class="wrap care">
+      <div class="head">
+        <p class="label r">Pós-venda</p>
+        <h2 class="title r">Vender é fácil. A gente quer ser lembrado depois.</h2>
+        <p class="lede r">A maior reclamação de quem compra carro elétrico não é o carro. É a loja sumir depois da entrega. Aqui são quatro promessas, por escrito.</p>
+      </div>
+      <ol class="promises">
+        <li class="r"><span class="n">01</span><div><h3>Revisão com preço fechado antes do serviço.</h3><p>Você sabe quanto vai pagar antes de deixar o carro. Sem surpresa no balcão.</p></div></li>
+        <li class="r"><span class="n">02</span><div><h3>Carregador entregue junto com o carro.</h3><p>Não pelo correio, não "semana que vem". Sai daqui com tudo na mão.</p></div></li>
+        <li class="r"><span class="n">03</span><div><h3>Um consultor no WhatsApp, com nome e telefone.</h3><p>A mesma pessoa que vendeu atende depois. <span class="pulse" aria-hidden="true"></span>Resposta no mesmo dia.</p></div></li>
+        <li class="r"><span class="n">04</span><div><h3>8 anos de garantia na bateria.</h3><p>A parte que mais preocupa é a mais protegida.</p></div></li>
+      </ol>
+    </div>
+  </section>
+
+  <div class="beam" aria-hidden="true"></div>
+
+  <section id="duvidas" class="reveal">
+    <div class="wrap center">
+      <p class="label r">Dúvidas</p>
+      <h2 class="title r">O que todo mundo pergunta antes de comprar.</h2>
+    </div>
+    <div class="faq">
+      <details class="r"><summary>E se eu não tiver garagem?</summary><p>Dá para viver bem com recarga fora de casa: no trabalho, no mercado, no shopping. Muitos condomínios já liberam a instalação de carregador na vaga. No test drive a gente olha o seu caso e faz a conta junto com você.</p></details>
+      <details class="r"><summary>A autonomia cai no calor?</summary><p>Cai um pouco, como o consumo de qualquer carro com ar ligado. No dia a dia da cidade quase ninguém sente, porque o carro dorme carregado. Para viagem, o app planeja as paradas de recarga.</p></details>
+      <details class="r"><summary>E se a bateria der problema?</summary><p>A bateria tem 8 anos de garantia. E a perda de capacidade é lenta: depois de anos de uso, ela continua fazendo quase tudo que fazia nova.</p></details>
+      <details class="r"><summary>Carro elétrico desvaloriza muito?</summary><p>O mercado ainda está se formando e a gente não vai fingir que não. O que segura valor é carro revisado na rede, com histórico e bateria na garantia. É isso que entregamos.</p></details>
+      <details class="r"><summary>A manutenção é cara?</summary><p>Tem bem menos coisa para trocar: sem óleo, sem correia, sem embreagem. E o preço de cada revisão sai fechado antes do serviço.</p></details>
+    </div>
+  </section>
+
+  <section id="agendar" class="book reveal">
+    <div class="bg" aria-hidden="true"></div>
+    <div class="wrap" id="bookWrap">
+      <p class="label r">Test drive</p>
+      <h2 class="title r">Sinta antes de decidir.</h2>
+      <p class="lede r">40 minutos, no seu horário, sem compromisso. Um consultor chama você no WhatsApp para confirmar.</p>
+      <form id="form" class="r" novalidate>
+        <div class="field"><label for="nome">Seu nome</label><input id="nome" name="nome" autocomplete="name" placeholder="Como podemos te chamar?" required></div>
+        <div class="field"><label for="zap">WhatsApp</label><input id="zap" name="zap" type="tel" inputmode="tel" autocomplete="tel" placeholder="(11) 90000-0000" required></div>
+        <div class="two">
+          <div class="field"><label for="modelo">Modelo</label><select id="modelo" name="modelo"><option>Sealion 6</option><option>Song Plus</option><option>Song Premium</option><option>Ainda não sei</option></select></div>
+          <div class="field"><label for="periodo">Melhor período</label><select id="periodo" name="periodo"><option>Manhã</option><option>Tarde</option><option>Sábado</option></select></div>
+        </div>
+        <button class="btn" type="submit">Quero meu test drive</button>
+        <p class="fine">Seus dados servem só para agendar o test drive.</p>
+      </form>
+      <div class="success" role="status" aria-live="polite"><h3>Pronto.</h3><p>Um consultor chama você no WhatsApp ainda hoje para confirmar o horário.</p></div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <div class="foot-brand">
+      <a class="logo" href="#top">BYD</a>
+      <p>SUVs 100% elétricos, com pós-venda que responde.</p>
+      <a class="btn small" href="#agendar">Agendar test drive</a>
+    </div>
+    <nav class="foot-col" aria-label="Modelos"><h3>Modelos</h3><a href="#modelos">Sealion 6</a><a href="#modelos">Song Plus</a><a href="#modelos">Song Premium</a></nav>
+    <nav class="foot-col" aria-label="Atendimento"><h3>Atendimento</h3><a href="#recarga">Recarga</a><a href="#posvenda">Pós-venda</a><a href="#duvidas">Dúvidas</a></nav>
+    <div class="foot-col"><h3>Horário</h3><p>Seg a sex, 9h às 19h</p><p>Sábado, 9h às 14h</p></div>
+  </div>
+  <div class="wrap legal"><p>BYD é marca registrada da BYD Company Ltd.</p><p>Valores de recarga são estimativas e variam com a tarifa local.</p></div>
+</footer>
+
+<script>
+(() => {
+  const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
+  const clamp = (v, lo, hi) => Math.min(hi, Math.max(lo, v));
+  const smooth = (p, e0, e1) => { const t = clamp((p - e0) / (e1 - e0), 0, 1); return t * t * (3 - 2 * t); };
+  function rng(seed) { let s = seed >>> 0; return () => (s = (s * 1664525 + 1013904223) >>> 0) / 4294967296; }
+
+  /* divisão em palavras, uma vez */
+  $$('.split').forEach((el, i) => {
+    const text = el.textContent.trim(), r = rng(7 + i * 31);
+    const words = text.split(' ');
+    el.innerHTML = '<span class="sr">' + text + '</span><span aria-hidden="true">' +
+      words.map((w, n) => '<span class="w" style="--th:' + (n / words.length * .45 + r() * .05).toFixed(3) + '">' + w + '</span>').join(' ') + '</span>';
+  });
+
+  /* HERO */
+  const hero = $('#top'), stage = $('#stage'), video = $('#hero'), poster = $('#poster'), ring = $('.ring');
+  const bands = $$('.band').map((el, i, all) => ({ el, a: +el.dataset.a, b: +el.dataset.b, ramp: +el.dataset.ramp || 0, first: i === 0, last: i === all.length - 1, op: -1, k: -1 }));
+  const range = () => Math.max(1, hero.offsetHeight - innerHeight);
+  const heroProgress = () => clamp((scrollY - hero.offsetTop) / range(), 0, 1);
+
+  const hudBar = $('#hudBar'), hudPct = $('#hudPct');
+  let hudLast = '', hudAt = 0;
+  function updateHud(p) {
+    const now = performance.now(), txt = Math.round(p * 100) + '%';
+    if (txt === hudLast || (now - hudAt < 100 && p > 0 && p < 1)) return;
+    hudLast = txt; hudAt = now; hudPct.textContent = txt; hudBar.style.setProperty('--h', p.toFixed(3));
+  }
+  const media = $('#media');
+  let zLast = -1, endLast = -1, endState = null;
+  let loadK = 0, loadStart = 0, late = null;
+  function updateCaptions(p) {
+    updateHud(p);
+    const z = Math.round((1 + .14 * p) * 10000) / 10000;
+    if (z !== zLast) { zLast = z; media.style.setProperty('--z', z); }
+    const end = Math.round((.3 + .7 * smooth(p, .72, 1)) * 1000) / 1000;
+    if (end !== endLast) { endLast = end; stage.style.setProperty('--end', end); }
+    const isEnd = p > .9;
+    if (isEnd !== endState) { endState = isEnd; stage.classList.toggle('end', isEnd); }
+    const isLate = p > .55;
+    if (isLate !== late) { late = isLate; stage.classList.toggle('late', isLate); }
+    const f = Math.min(.2 * innerHeight / range(), .08);
+    for (const b of bands) {
+      const fd = Math.min(f, (b.b - b.a) / 3);
+      const op = (b.first ? 1 : smooth(p, b.a, b.a + fd)) * (b.last ? 1 : 1 - smooth(p, b.b - fd, b.b));
+      let k = clamp((p - b.a) / (b.ramp || Math.min(.025, (b.b - b.a) * .35)), 0, 1);
+      if (b.first) k = Math.max(k, loadK);
+      const opR = Math.round(op * 1000) / 1000;
+      if (opR !== b.op) { b.op = opR; b.el.style.opacity = opR; b.el.style.visibility = opR < .01 ? 'hidden' : 'visible'; }
+      if (Math.abs(k - b.k) > .008 || (k === 1 && b.k !== 1) || (k === 0 && b.k !== 0)) { b.k = k; b.el.style.setProperty('--k', k.toFixed(3)); }
+    }
+  }
+  function loadRamp(now) {
+    if (!loadStart) loadStart = now;
+    loadK = clamp((now - loadStart) / 1400, 0, 1);
+    loadK = 1 - Math.pow(1 - loadK, 3);
+    updateCaptions(shown);
+    if (loadK < 1) requestAnimationFrame(loadRamp);
+  }
+
+  /* seeks travados */
+  let seekBusy = false, pendingTime = null;
+  function requestSeek(t) {
+    if (!video.duration || !isFinite(video.duration)) return;
+    t = clamp(t, 0, video.duration - .04);
+    if (seekBusy) { pendingTime = t; return; }
+    seekBusy = true; video.currentTime = t;
+  }
+  video.addEventListener('seeked', () => { seekBusy = false; if (pendingTime !== null) { const t = pendingTime; pendingTime = null; requestSeek(t); } });
+  video.addEventListener('error', () => { seekBusy = false; pendingTime = null; failVideo(); });
+
+  /* loop rAF que descansa */
+  let target = 0, shown = 0, rafId = null, lastTick = 0, heroOnScreen = true;
+  function tick(now) {
+    const dt = Math.min(100, now - (lastTick || now)); lastTick = now;
+    shown += (target - shown) * (1 - Math.pow(1 - .16, dt / 16.667));
+    if (Math.abs(target - shown) < .0005) { shown = target; rafId = null; lastTick = 0; }
+    else rafId = requestAnimationFrame(tick);
+    requestSeek(shown * (video.duration || 0));
+    updateCaptions(shown);
+  }
+  function onScroll() {
+    target = heroProgress();
+    if (rafId === null && heroOnScreen) rafId = requestAnimationFrame(tick);
+  }
+  new IntersectionObserver(es => { heroOnScreen = es[0].isIntersecting; if (heroOnScreen) onScroll(); }).observe(hero);
+
+  /* carregamento do vídeo (Blob) */
+  const VIDEO_URL = 'assets/hero-scrub.mp4', VIDEO_BYTES = 6000000;
+  let started = false, inited = false;
+  function failVideo() {
+    stage.classList.add('video-failed');
+    document.getElementById('posterEnd').style.backgroundImage = "url('assets/hero-ending.jpg')";
+    if (ring) ring.style.display = 'none';
+  }
+  async function loadHeroBlob() {
+    const ctrl = new AbortController();
+    let watchdog = setTimeout(() => ctrl.abort(), 20000);
+    const res = await fetch(VIDEO_URL, { priority: 'low', signal: ctrl.signal });
+    if (!res.ok) throw new Error('video ' + res.status);
+    const total = Number(res.headers.get('Content-Length')) || VIDEO_BYTES;
+    const reader = res.body.getReader(); const chunks = []; let got = 0, lastRing = 0;
+    for (;;) {
+      const { done, value } = await reader.read();
+      if (done) break;
+      clearTimeout(watchdog); watchdog = setTimeout(() => ctrl.abort(), 20000);
+      chunks.push(value); got += value.length;
+      const frac = Math.min(1, got / total), now = performance.now();
+      if (now - lastRing > 100 || frac === 1) { lastRing = now; ring.style.setProperty('--ld', Math.round(126 * (1 - frac))); }
+    }
+    clearTimeout(watchdog); ring.style.setProperty('--ld', 0);
+    video.src = URL.createObjectURL(new Blob(chunks, { type: 'video/mp4' }));
+    video.load();
+    video.addEventListener('canplay', () => { requestSeek(heroProgress() * video.duration); stage.classList.add('video-ready'); }, { once: true });
+  }
+  function startBlobFetch() { if (started) return; started = true; loadHeroBlob().catch(failVideo); }
+  function initHeroOnce() {
+    if (inited) return; inited = true;
+    poster.style.backgroundImage = "url('assets/hero-poster.jpg')";
+    const img = new Image(); img.onload = startBlobFetch; img.onerror = startBlobFetch; img.src = 'assets/hero-poster.jpg';
+    setTimeout(startBlobFetch, 4000);
+  }
+
+  /* portões do hero estático, vivos */
+  const GATES = [
+    '(max-width: 720px)',
+    '(orientation: portrait) and (max-width: 1024px)',
+    '(orientation: portrait) and (pointer: coarse)',
+    '(orientation: landscape) and (pointer: coarse) and (max-height: 560px)',
+    '(prefers-reduced-motion: reduce)'
+  ];
+  let scrubOn = false;
+  function enableScrub() {
+    if (scrubOn) return; scrubOn = true;
+    initHeroOnce();
+    addEventListener('scroll', onScroll, { passive: true });
+    bands.forEach(b => { b.op = -1; b.k = -1; });
+    unpinFinalStates();
+    shown = target = heroProgress();
+    updateCaptions(shown);
+    if (!loadStart) { requestAnimationFrame(loadRamp); setTimeout(() => { if (loadK < 1) { loadK = 1; bands[0].k = -1; updateCaptions(shown); } }, 1800); }
+    onScroll();
+  }
+  function disableScrub() {
+    if (!scrubOn) return; scrubOn = false;
+    removeEventListener('scroll', onScroll);
+    if (rafId !== null) { cancelAnimationFrame(rafId); rafId = null; }
+  }
+  function applyHeroMode() { if (GATES.some(q => matchMedia(q).matches)) disableScrub(); else enableScrub(); }
+  const MQLS = GATES.map(q => matchMedia(q));
+  MQLS.forEach(m => m.addEventListener('change', applyHeroMode));
+
+  /* nav sólida */
+  const nav = $('#nav'); let navSolid = null;
+  function navCheck() { const s = scrollY > hero.offsetHeight - innerHeight * 1.2 || !scrubOn && scrollY > 40; if (s !== navSolid) { navSolid = s; nav.classList.toggle('solid', s); } }
+  addEventListener('scroll', navCheck, { passive: true });
+
+  /* entradas e linhas de luz */
+  const io = new IntersectionObserver(es => es.forEach(e => {
+    if (!e.isIntersecting) return;
+    e.target.classList.add('in'); io.unobserve(e.target);
+    setTimeout(() => e.target.classList.add('settled'), 1400);
+  }), { threshold: .15 });
+  $$('.reveal, .beam').forEach(el => io.observe(el));
+  const care = $('#posvenda');
+  new IntersectionObserver(es => care.classList.toggle('live', es[0].isIntersecting)).observe(care);
+  document.addEventListener('visibilitychange', () => document.body.classList.toggle('paused', document.hidden));
+
+  /* momento interativo: segure para carregar */
+  const battery = $('#battery'), fill = $('#fill'), pct = $('#pct'), cost = $('#cost'), holdBtn = $('#hold'), holdText = $('#holdText'), doneMsg = $('#doneMsg');
+  let c = 0, holding = false, cRaf = null, cLast = 0, charged = false, pinnedCharge = false, lastPct = '';
+  function paintCharge(now) {
+    fill.style.setProperty('--c', c.toFixed(4));
+    const p = Math.round(c * 100) + '%';
+    if (p !== lastPct && (now - (paintCharge.t || 0) > 60 || c === 1 || c === 0)) {
+      paintCharge.t = now; lastPct = p; pct.textContent = p;
+      cost.textContent = 'R$ ' + (c * 63).toFixed(2).replace('.', ',') + ' na tomada';
+    }
+  }
+  function chargeTick(now) {
+    const dt = Math.min(100, now - (cLast || now)) / 1000; cLast = now;
+    if (holding) c = Math.min(1, c + dt / 2.4); else c = Math.max(0, c - dt * .8 * (0.4 + c));
+    paintCharge(now);
+    if (c >= 1 && !charged) {
+      charged = true; holding = false; battery.classList.add('charged');
+      holdText.textContent = 'Bateria cheia'; doneMsg.textContent = 'Carregado. Agora compare.';
+      countUp();
+    }
+    if ((holding || c > 0) && !charged) cRaf = requestAnimationFrame(chargeTick);
+    else { cRaf = null; cLast = 0; }
+  }
+  function startHold(e) { if (charged) return; if (e) e.preventDefault(); holding = true; if (!cRaf) cRaf = requestAnimationFrame(chargeTick); }
+  function endHold() { holding = false; }
+  holdBtn.addEventListener('pointerdown', startHold);
+  ['pointerup', 'pointerleave', 'pointercancel'].forEach(t => holdBtn.addEventListener(t, endHold));
+  holdBtn.addEventListener('keydown', e => { if ((e.key === ' ' || e.key === 'Enter') && !e.repeat) startHold(e); });
+  holdBtn.addEventListener('keyup', e => { if (e.key === ' ' || e.key === 'Enter') endHold(); });
+
+  /* movimento reduzido ao vivo */
+  function pinToFinalStates() {
+    if (!charged) { pinnedCharge = true; c = 1; charged = true; battery.classList.add('charged'); holdText.textContent = 'Bateria cheia'; paintCharge(performance.now()); }
+    $$('.reveal, .beam').forEach(el => el.classList.add('in'));
+  }
+  function unpinFinalStates() {
+    if (pinnedCharge) { pinnedCharge = false; charged = false; c = 0; battery.classList.remove('charged'); holdText.textContent = 'Segure para carregar'; doneMsg.textContent = ''; lastPct = ''; paintCharge(performance.now()); }
+  }
+  const RM = matchMedia('(prefers-reduced-motion: reduce)');
+  RM.addEventListener('change', e => { if (e.matches) pinToFinalStates(); else applyHeroMode(); });
+  if (RM.matches) pinToFinalStates();
+
+  /* modelo escolhido e formulário */
+  $$('[data-model]').forEach(a => a.addEventListener('click', () => { $('#modelo').value = a.dataset.model; }));
+  $('#form').addEventListener('submit', e => {
+    e.preventDefault();
+    const f = e.target; const ok = f.nome.value.trim() && f.zap.value.replace(/\D/g, '').length >= 10;
+    if (!ok) { (f.nome.value.trim() ? f.zap : f.nome).focus(); f.nome.setAttribute('aria-invalid', !f.nome.value.trim()); f.zap.setAttribute('aria-invalid', f.zap.value.replace(/\D/g, '').length < 10); return; }
+    $('#bookWrap').classList.add('sent');
+  });
+
+  /* chuva de fundo, em nível de sussurro, só abaixo do hero */
+  const rain = $('#rain'), rc = rain.getContext('2d');
+  let drops = [], rainRaf = null, rainLast = 0, rainOn = false;
+  function sizeRain() {
+    const d = Math.min(2, devicePixelRatio || 1);
+    rain.width = innerWidth * d; rain.height = innerHeight * d; rc.setTransform(d, 0, 0, d, 0, 0);
+    const r = rng(99), n = Math.round(innerWidth * innerHeight / 14000);
+    drops = Array.from({ length: n }, () => ({ x: r() * innerWidth, y: r() * innerHeight, l: 10 + r() * 22, v: 260 + r() * 340, a: .05 + r() * .12 }));
+  }
+  function rainTick(now) {
+    const dt = Math.min(50, now - (rainLast || now)) / 1000; rainLast = now;
+    rc.clearRect(0, 0, innerWidth, innerHeight);
+    rc.lineWidth = 1; rc.lineCap = 'round';
+    for (const p of drops) {
+      p.y += p.v * dt; p.x -= p.v * dt * .08;
+      if (p.y > innerHeight + 30) { p.y = -30; p.x = Math.random() * innerWidth * 1.1; }
+      rc.strokeStyle = 'rgba(190,225,255,' + p.a + ')';
+      rc.beginPath(); rc.moveTo(p.x, p.y); rc.lineTo(p.x + p.l * .08, p.y - p.l); rc.stroke();
+    }
+    rainRaf = requestAnimationFrame(rainTick);
+  }
+  function rainCheck() {
+    const want = !RM.matches && !document.hidden && scrollY > hero.offsetTop + hero.offsetHeight - innerHeight * .6;
+    if (want === rainOn) return; rainOn = want;
+    rain.classList.toggle('on', want);
+    if (want && !rainRaf) { if (!drops.length) sizeRain(); rainLast = 0; rainRaf = requestAnimationFrame(rainTick); }
+    if (!want && rainRaf) { cancelAnimationFrame(rainRaf); rainRaf = null; }
+  }
+  addEventListener('resize', () => { if (drops.length) sizeRain(); }, { passive: true });
+  document.addEventListener('visibilitychange', rainCheck);
+
+  /* paralaxe suave nas imagens */
+  const pars = $$('.model img, .step img, .book .bg').map(el => { el.classList.add('par'); return { el, last: null }; });
+  let parRaf = null;
+  function parTick() {
+    parRaf = null;
+    if (RM.matches) return;
+    const vh = innerHeight;
+    for (const p of pars) {
+      const r = p.el.parentElement.getBoundingClientRect();
+      if (r.bottom < -100 || r.top > vh + 100) continue;
+      const t = ((r.top + r.height / 2) - vh / 2) / vh;
+      const y = Math.round(t * -36 * 10) / 10;
+      if (y !== p.last) { p.last = y; p.el.style.transform = 'translate3d(0,' + y + 'px,0) scale(1.08)'; }
+    }
+  }
+  addEventListener('scroll', () => { rainCheck(); if (!parRaf) parRaf = requestAnimationFrame(parTick); }, { passive: true });
+  RM.addEventListener('change', () => { rainCheck(); pars.forEach(p => { p.el.style.transform = ''; p.last = null; }); parTick(); });
+
+  /* títulos entram palavra por palavra */
+  $$('.title').forEach(t => {
+    const words = t.textContent.trim().split(/\s+/);
+    t.innerHTML = words.map((w, i) => '<span class="wd" style="--i:' + i + '">' + w + '</span>').join(' ');
+  });
+  $$('.promises li').forEach((li, i) => li.style.setProperty('--i', i));
+
+  /* brilho de luz nas fotos */
+  $$('.step figure, .model').forEach((el, i) => {
+    const g = document.createElement('span'); g.className = 'glint'; g.setAttribute('aria-hidden', 'true');
+    g.style.setProperty('--gd', (i % 3) * .18 + 's'); el.appendChild(g);
+  });
+
+  /* contadores da comparação */
+  const nums = $$('.compare strong').map(el => ({ el, to: +el.textContent.replace(/\D/g, '') }));
+  function countUp() {
+    if (RM.matches) return;
+    const t0 = performance.now();
+    (function step(now) {
+      const t = Math.min(1, (now - t0) / 1200), e = 1 - Math.pow(1 - t, 3);
+      nums.forEach(n => { n.el.textContent = 'perto de R$ ' + Math.round(n.to * e); });
+      if (t < 1) requestAnimationFrame(step);
+    })(t0);
+  }
+
+  /* inclinação 3D e botões magnéticos (só com mouse) */
+  const fine = matchMedia('(hover: hover) and (pointer: fine)');
+  $$('.step, .model').forEach(el => {
+    el.classList.add('tilt');
+    el.addEventListener('pointermove', e => {
+      if (!fine.matches || RM.matches) return;
+      const r = el.getBoundingClientRect(), x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5;
+      el.style.setProperty('--ry', (x * 4).toFixed(2) + 'deg'); el.style.setProperty('--rx', (y * -3).toFixed(2) + 'deg');
+    });
+    el.addEventListener('pointerleave', () => { el.style.setProperty('--ry', '0deg'); el.style.setProperty('--rx', '0deg'); });
+  });
+  $$('.btn:not(.hold)').forEach(b => {
+    b.classList.add('mag');
+    b.addEventListener('pointermove', e => {
+      if (!fine.matches || RM.matches) return;
+      const r = b.getBoundingClientRect();
+      b.style.setProperty('--mx', ((e.clientX - r.left - r.width / 2) * .12).toFixed(1) + 'px');
+      b.style.setProperty('--my', ((e.clientY - r.top - r.height / 2) * .18).toFixed(1) + 'px');
+    });
+    b.addEventListener('pointerleave', () => { b.style.setProperty('--mx', '0px'); b.style.setProperty('--my', '0px'); });
+  });
+
+  /* faixa que corre, acelera com o scroll */
+  const track = $('#track'), ticker = track.parentElement;
+  const base = [...track.children].map(n => n.outerHTML).join('');
+  while (track.scrollWidth < Math.max(2560, innerWidth) * 2) track.insertAdjacentHTML('beforeend', base);
+  let tx = 0, tvel = 0, tRaf = null, tLast = 0, tOn = false, lastY = scrollY;
+  function tickerTick(now) {
+    const dt = Math.min(50, now - (tLast || now)) / 1000; tLast = now;
+    tvel *= Math.pow(.04, dt);
+    tx -= (60 + tvel) * dt;
+    const half = track.scrollWidth / 2;
+    if (-tx > half) tx += half;
+    track.style.transform = 'translate3d(' + tx.toFixed(1) + 'px,0,0)';
+    tRaf = requestAnimationFrame(tickerTick);
+  }
+  function tickerCheck() {
+    const want = tOn && !RM.matches && !document.hidden;
+    if (want && !tRaf) { tLast = 0; tRaf = requestAnimationFrame(tickerTick); }
+    if (!want && tRaf) { cancelAnimationFrame(tRaf); tRaf = null; }
+  }
+  new IntersectionObserver(es => { tOn = es[0].isIntersecting; tickerCheck(); }).observe(ticker);
+  addEventListener('scroll', () => { const d = Math.abs(scrollY - lastY); lastY = scrollY; tvel = Math.min(900, tvel + d * 2.2); }, { passive: true });
+  document.addEventListener('visibilitychange', tickerCheck);
+  RM.addEventListener('change', tickerCheck);
+
+  applyHeroMode();
+  navCheck();
+  rainCheck();
+  parTick();
+})();
+</script>
+</body>
+</html>
